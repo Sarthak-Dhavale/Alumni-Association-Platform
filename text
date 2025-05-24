@@ -1,0 +1,31 @@
+<?php
+// attend_activity.php
+session_start();
+require 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("Invalid request method.");
+}
+
+// Retrieve and validate POST data
+$activity_id = isset($_POST['activity_id']) ? intval($_POST['activity_id']) : 0;
+$people_count = isset($_POST['people_count']) ? intval($_POST['people_count']) : 0;
+$alumni_name = isset($_POST['alumni_name']) ? trim($_POST['alumni_name']) : '';
+$address = isset($_POST['address']) ? trim($_POST['address']) : '';
+$stay_days = isset($_POST['stay_days']) ? intval($_POST['stay_days']) : 0;
+
+// Validate inputs
+if ($activity_id <= 0 || $people_count < 1 || empty($alumni_name) || empty($address) || $stay_days < 0) {
+    die("Invalid input data.");
+}
+
+try {
+    $stmt = $pdo->prepare("INSERT INTO alumni_attendance (activity_id, alumni_name, address, people_count, stay_days) VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([$activity_id, $alumni_name, $address, $people_count, $stay_days]);
+
+    header("Location: activity_details.php?id=$activity_id");
+    exit;
+} catch (PDOException $e) {
+    die("Error recording attendance: " . $e->getMessage());
+}
+?>

@@ -1,0 +1,36 @@
+/* /assets/success_stories.css */
+
+.success-stories-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.success-stories-container h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.story {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.story:last-child {
+    border-bottom: none;
+}
+
+.story h3 {
+    color: #4a90e2;
+    font-size: 18px;
+}
+
+.story p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
