@@ -35,7 +35,19 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo "Deployment step — coming soon!"
+                echo "Deploying to /var/www/alumni-app"
+
+                sh '''
+                    # Clear old files
+                    rm -rf /var/www/alumni-app/*
+
+                    # Copy all project files
+                    cp -r * /var/www/alumni-app/
+
+                    # Restart Nginx and PHP-FPM
+                    sudo systemctl restart nginx
+                    sudo systemctl restart php8.3-fpm
+                '''
             }
         }
     }
