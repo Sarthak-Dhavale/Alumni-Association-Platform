@@ -46,7 +46,7 @@ Builds a sense of community, pride, and connection to the institution.
 Enhances alumni engagement through a modern, accessible, and feature-rich platform.
 
 **Builded a CI/CD Pipeline for it**
-I have built a CI/CD pipleline for deploying this app.
+I have built a CI/CD pipleline for deploying this app on local  WSL server.
 
 
 
